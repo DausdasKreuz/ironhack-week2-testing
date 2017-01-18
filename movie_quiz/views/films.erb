@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Movie Quiz</title>
+</head>
+<body>
+	<% rand_year = session[:movies][rand(9)].year %>
+	Which movie was released in <%= rand_year %>?
+	<p></p>
+	<% session[:movies].each do |movie| %>
+		<% if movie.year == rand_year %>
+			<img  style="width : 200px" onClick="alert('correct')" src= <%= movie.poster %>>
+		<% elsif movie.year != rand_year %>
+			<img  style="width : 200px" onClick="alert('fail')" src= <%= movie.poster %>>
+		<% end %>
+	<% end %>
+</body>
+</html>
